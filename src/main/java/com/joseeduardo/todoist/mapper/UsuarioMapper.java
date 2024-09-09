@@ -5,12 +5,10 @@ import com.joseeduardo.todoist.model.CriarUsuarioEntradaDTO;
 
 public class UsuarioMapper {
 
-    private UsuarioMapper() {}
+	private UsuarioMapper(UsuarioEntity user) {
+	}
 
-    public static UsuarioEntity paraEntidade(CriarUsuarioEntradaDTO dto) {
-        return UsuarioEntity.builder()
-                .nome(dto.getNome())
-                .senha(dto.getSenha())
-                .build();
-    }
+	public static UsuarioEntity paraEntidade(CriarUsuarioEntradaDTO dto) {
+		return new UsuarioEntity(dto.getNome(), dto.getSenha());
+	}
 }
