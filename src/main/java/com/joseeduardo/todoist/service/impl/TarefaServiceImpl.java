@@ -1,7 +1,5 @@
 package com.joseeduardo.todoist.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,8 +38,4 @@ public class TarefaServiceImpl implements TarefaService {
 
 	}
 
-	@Override
-	public List<TarefaEntity> buscarTodos() {
-		return tarefaRepository.findAll();
-	}
 }
