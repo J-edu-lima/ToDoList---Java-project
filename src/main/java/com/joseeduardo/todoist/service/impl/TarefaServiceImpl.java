@@ -20,6 +20,7 @@ public class TarefaServiceImpl implements TarefaService {
 
 	@Autowired
 	private TarefaRepository tarefaRepository;
+	
 	@Autowired
 	private UsuarioService usuarioService;
 

@@ -5,48 +5,47 @@ import com.joseeduardo.todoist.entity.UsuarioEntity;
 import com.joseeduardo.todoist.entity.enums.Status;
 
 import lombok.Builder;
-import lombok.Data;
 
 @Builder
-@Data
 public class CriarTarefaEntradaDTO {
 
 	private Long id;
-	private String tarefa_titulo;
-	private String tarefa_descrição;
+	private String titulo;
+	private String descrição;
 	private Status status;
 
 	private UsuarioEntity usuario;
 
-	public CriarTarefaEntradaDTO(Long id, String tarefa_titulo, String tarefa_descrição, Status status) {
+	public CriarTarefaEntradaDTO(Long id, String titulo, String descrição, Status status) {
 		this.id = id;
-		this.tarefa_titulo = tarefa_titulo;
-		this.tarefa_descrição = tarefa_descrição;
+		this.titulo = titulo;
+		this.descrição = descrição;
 		this.status = status;
 	}
 
 	public CriarTarefaEntradaDTO(TarefaEntity x) {
-		this.id = x.getTarefa_id();
-		this.tarefa_titulo = x.getTarefa_titulo();
-		this.tarefa_descrição = x.getTarefa_descrição();
-		this.status = x.getTarefa_status();
+
+		this.id = x.getId();
+		this.titulo = x.getTitulo();
+		this.descrição = x.getDescrição();
+		this.status = x.getStatus();
 		this.usuario = x.getUsuario();
 	}
 
-	public String getTarefa_titulo() {
-		return tarefa_titulo;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTarefa_titulo(String tarefa_titulo) {
-		this.tarefa_titulo = tarefa_titulo;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getTarefa_descrição() {
-		return tarefa_descrição;
+	public String getDescrição() {
+		return descrição;
 	}
 
-	public void setTarefa_descrição(String tarefa_descrição) {
-		this.tarefa_descrição = tarefa_descrição;
+	public void setDescrição(String descrição) {
+		this.descrição = descrição;
 	}
 
 	public UsuarioEntity getUsuario() {

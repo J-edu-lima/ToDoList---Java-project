@@ -46,17 +46,17 @@ public class TarefaController {
 
 	@GetMapping
 	public ResponseEntity<List<CriarTarefaEntradaDTO>> buscarTodos() {
-		List<TarefaEntity> list = tarefaService.buscarTodos();
-		List<CriarTarefaEntradaDTO> listDTO = list.stream().map(x -> new CriarTarefaEntradaDTO(x))
+		List<TarefaEntity> tarefas = tarefaService.buscarTodos();
+		List<CriarTarefaEntradaDTO> tarefasEntradaDTO = tarefas.stream().map(x -> new CriarTarefaEntradaDTO(x))
 				.collect(Collectors.toList());
-		return ResponseEntity.ok().body(listDTO);
+		return ResponseEntity.ok().body(tarefasEntradaDTO);
 	}
 	@GetMapping("/status/{status}")
 	public ResponseEntity<List<CriarTarefaEntradaDTO>> buscarStatus(@PathVariable Status status){
-		List<TarefaEntity> list = tarefaService.buscarPorStatus(status);
-		List<CriarTarefaEntradaDTO> listDTO = list.stream().map(x -> new CriarTarefaEntradaDTO(x))
+		List<TarefaEntity> tarefas = tarefaService.buscarPorStatus(status);
+		List<CriarTarefaEntradaDTO> tarefasEntradaDTO = tarefas.stream().map(x -> new CriarTarefaEntradaDTO(x))
 				.collect(Collectors.toList());
-		return ResponseEntity.ok().body(listDTO);
+		return ResponseEntity.ok().body(tarefasEntradaDTO);
 	}
 
 }
