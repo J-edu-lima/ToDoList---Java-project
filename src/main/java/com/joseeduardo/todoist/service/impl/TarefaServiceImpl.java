@@ -1,11 +1,14 @@
 package com.joseeduardo.todoist.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.joseeduardo.todoist.entity.TarefaEntity;
 import com.joseeduardo.todoist.entity.UsuarioEntity;
+import com.joseeduardo.todoist.entity.enums.Status;
 import com.joseeduardo.todoist.mapper.TarefaMapper;
 import com.joseeduardo.todoist.model.CriarTarefaEntradaDTO;
 import com.joseeduardo.todoist.repository.TarefaRepository;
@@ -27,15 +30,25 @@ public class TarefaServiceImpl implements TarefaService {
 
 	@Override
 	public void criar(CriarTarefaEntradaDTO criarTarefaEntradaDTO, @PathVariable Long id) {
-		UsuarioEntity user = usuarioService.buscarPorID(id);
+		UsuarioEntity user = usuarioService.buscar(id);
 		TarefaEntity tarefaEntity = TarefaMapper.paraEntidade(criarTarefaEntradaDTO, user);
 		tarefaRepository.save(tarefaEntity);
 	}
 
 	@Override
-	public void excluirPorID(Long id) {
+	public void excluir(Long id) {
 		tarefaRepository.deleteById(id);
-
 	}
 
+	@Override
+	public List<TarefaEntity> buscarTodos() {
+		return tarefaRepository.findAll();
+	}
+
+	@Override
+	public List<TarefaEntity> buscarPorStatus(Status status) {
+		return tarefaRepository.findByStatus(status);
+		
+
+	}
 }

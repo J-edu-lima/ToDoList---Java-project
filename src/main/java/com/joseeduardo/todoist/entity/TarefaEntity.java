@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Builder;
@@ -30,10 +29,9 @@ public class TarefaEntity implements Serializable {
 	@Column(name = "descrição")
 	private String tarefa_descrição;
 	@Column(name = "status")
-	private Status tarefa_status;
+	private Status status;
 
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
 	private UsuarioEntity usuario;
 
 	public TarefaEntity() {
@@ -45,7 +43,7 @@ public class TarefaEntity implements Serializable {
 		this.tarefa_titulo = tarefa_titulo;
 		this.tarefa_descrição = tarefa_descrição;
 		this.usuario = usuario;
-		this.tarefa_status = status;
+		this.status = status;
 	}
 
 	public Long getTarefa_id() {
@@ -81,11 +79,11 @@ public class TarefaEntity implements Serializable {
 	}
 
 	public Status getTarefa_status() {
-		return tarefa_status;
+		return status;
 	}
 
-	public void setTarefa_status(Status tarefa_status) {
-		this.tarefa_status = tarefa_status;
+	public void setTarefa_status(Status status) {
+		this.status = status;
 	}
 	
 

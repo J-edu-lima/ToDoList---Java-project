@@ -22,28 +22,31 @@ import com.joseeduardo.todoist.service.UsuarioService;
 public class UsuarioController {
 
 	@Autowired
-    private UsuarioService usuarioService;
+	private UsuarioService usuarioService;
 
-    @Autowired
-    public UsuarioController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
+	@Autowired
+	public UsuarioController(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
 
-    @PostMapping
-    public ResponseEntity<Void> criar(@RequestBody CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
-        usuarioService.criar(criarUsuarioEntradaDTO);
+	@PostMapping
+	public ResponseEntity<Void> criar(@RequestBody CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
+		usuarioService.criar(criarUsuarioEntradaDTO);
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-    @GetMapping
-    public ResponseEntity<List<CriarUsuarioEntradaDTO>> buscarTodos(){
-    		List<UsuarioEntity> list = usuarioService.buscarTodos();
-    		List<CriarUsuarioEntradaDTO> listDto = list.stream().map(x -> new CriarUsuarioEntradaDTO(x)).collect(Collectors.toList());
-    		return ResponseEntity.ok().body(listDto);
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<CriarUsuarioEntradaDTO> buscarPorID(@PathVariable("id") Long id){
-    	UsuarioEntity usuario = usuarioService.buscarPorID(id);
-    	return ResponseEntity.ok().body(new CriarUsuarioEntradaDTO(usuario));
-    }
+		return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+
+	@GetMapping
+	public ResponseEntity<List<CriarUsuarioEntradaDTO>> buscarTodos() {
+		List<UsuarioEntity> list = usuarioService.buscarTodos();
+		List<CriarUsuarioEntradaDTO> listDto = list.stream().map(x -> new CriarUsuarioEntradaDTO(x))
+				.collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<CriarUsuarioEntradaDTO> buscar(@PathVariable("id") Long id) {
+		UsuarioEntity usuario = usuarioService.buscar(id);
+		return ResponseEntity.ok().body(new CriarUsuarioEntradaDTO(usuario));
+	}
 }

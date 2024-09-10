@@ -30,6 +30,7 @@ public class CriarTarefaEntradaDTO {
 		this.tarefa_titulo = x.getTarefa_titulo();
 		this.tarefa_descrição = x.getTarefa_descrição();
 		this.status = x.getTarefa_status();
+		this.usuario = x.getUsuario();
 	}
 
 	public String getTarefa_titulo() {

@@ -8,5 +8,5 @@ import com.joseeduardo.todoist.model.CriarUsuarioEntradaDTO;
 public interface UsuarioService {
     void criar(CriarUsuarioEntradaDTO criarUsuarioEntradaDTO);
 	List<UsuarioEntity> buscarTodos();
-	UsuarioEntity buscarPorID(Long id);
+	UsuarioEntity buscar(Long id);
 }

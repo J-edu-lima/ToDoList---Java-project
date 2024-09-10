@@ -34,7 +34,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usuarioRepository.findAll();
 	}
 	@Override
-	public UsuarioEntity buscarPorID(Long id) {
+	public UsuarioEntity buscar(Long id) {
 		Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
 		return usuario.orElseThrow();
 	}
