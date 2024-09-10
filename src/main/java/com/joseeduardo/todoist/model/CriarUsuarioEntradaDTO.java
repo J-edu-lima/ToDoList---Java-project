@@ -2,11 +2,7 @@ package com.joseeduardo.todoist.model;
 
 import com.joseeduardo.todoist.entity.UsuarioEntity;
 
-import lombok.Builder;
-import lombok.Data;
 
-@Builder
-@Data
 public class CriarUsuarioEntradaDTO {
 
 	private String nome;

@@ -26,10 +26,10 @@ public class CriarTarefaEntradaDTO {
 	}
 
 	public CriarTarefaEntradaDTO(TarefaEntity x) {
-		this.id = x.getTarefa_id();
-		this.tarefa_titulo = x.getTarefa_titulo();
-		this.tarefa_descrição = x.getTarefa_descrição();
-		this.status = x.getTarefa_status();
+		this.id = x.getId();
+		this.tarefa_titulo = x.getTitulo();
+		this.tarefa_descrição = x.getDescrição();
+		this.status = x.getStatus();
 	}
 
 	public String getTarefa_titulo() {

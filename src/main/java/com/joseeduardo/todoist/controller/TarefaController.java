@@ -34,7 +34,7 @@ public class TarefaController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> exlcuirPorID(@PathVariable("id") Long id) {
-		tarefaService.excluirPorID(id);
+		tarefaService.excluir(id);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 	

@@ -17,6 +17,7 @@ public class TarefaServiceImpl implements TarefaService {
 
 	@Autowired
 	private TarefaRepository tarefaRepository;
+	
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -33,7 +34,7 @@ public class TarefaServiceImpl implements TarefaService {
 	}
 
 	@Override
-	public void excluirPorID(Long id) {
+	public void excluir(Long id) {
 		tarefaRepository.deleteById(id);
 
 	}
