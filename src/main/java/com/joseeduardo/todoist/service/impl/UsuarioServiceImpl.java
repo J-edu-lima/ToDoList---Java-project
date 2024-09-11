@@ -33,6 +33,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public List<UsuarioEntity> buscarTodos() {
 		return usuarioRepository.findAll();
 	}
+	
 	@Override
 	public UsuarioEntity buscar(Long id) {
 		Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);

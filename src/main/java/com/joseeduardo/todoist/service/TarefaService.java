@@ -12,4 +12,7 @@ public interface TarefaService {
 	void excluir(Long id);
 	List<TarefaEntity> buscarTodos();
 	List<TarefaEntity> buscarPorStatus(Status status);
+	TarefaEntity buscar(Long id);
+	TarefaEntity atualizar(TarefaEntity novaTarefa, TarefaEntity tarefa);
+
 }

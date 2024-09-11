@@ -1,6 +1,7 @@
 package com.joseeduardo.todoist.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +16,14 @@ import com.joseeduardo.todoist.repository.TarefaRepository;
 import com.joseeduardo.todoist.service.TarefaService;
 import com.joseeduardo.todoist.service.UsuarioService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class TarefaServiceImpl implements TarefaService {
 
 	@Autowired
 	private TarefaRepository tarefaRepository;
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -49,7 +52,21 @@ public class TarefaServiceImpl implements TarefaService {
 	@Override
 	public List<TarefaEntity> buscarPorStatus(Status status) {
 		return tarefaRepository.findByStatus(status);
-		
+	}
+
+	@Override
+	public TarefaEntity buscar(Long id) {
+		Optional<TarefaEntity> usuario = tarefaRepository.findById(id);
+		return usuario.orElseThrow();
 
 	}
+
+	@Override
+	@Transactional
+	public TarefaEntity atualizar(TarefaEntity novaTarefa, TarefaEntity tarefa) {
+		tarefa.setStatus((novaTarefa.getStatus()));
+		return tarefaRepository.save(tarefa);
+
+	}
+
 }

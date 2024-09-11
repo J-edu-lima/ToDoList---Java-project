@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,12 +52,26 @@ public class TarefaController {
 				.collect(Collectors.toList());
 		return ResponseEntity.ok().body(tarefasEntradaDTO);
 	}
+
 	@GetMapping("/status/{status}")
-	public ResponseEntity<List<CriarTarefaEntradaDTO>> buscarStatus(@PathVariable Status status){
+	public ResponseEntity<List<CriarTarefaEntradaDTO>> buscarStatus(@PathVariable Status status) {
 		List<TarefaEntity> tarefas = tarefaService.buscarPorStatus(status);
 		List<CriarTarefaEntradaDTO> tarefasEntradaDTO = tarefas.stream().map(x -> new CriarTarefaEntradaDTO(x))
 				.collect(Collectors.toList());
 		return ResponseEntity.ok().body(tarefasEntradaDTO);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<CriarTarefaEntradaDTO> buscar(@PathVariable("id") Long id) {
+		TarefaEntity tarefa = tarefaService.buscar(id);
+		return ResponseEntity.ok().body(new CriarTarefaEntradaDTO(tarefa));
+	}
+
+	@PutMapping("/atualizar/{id}")
+	public ResponseEntity<Void> atualizarStatus(@RequestBody TarefaEntity statusId, @PathVariable Long id) {
+		TarefaEntity tarefa = tarefaService.buscar(id);
+		tarefaService.atualizar(statusId, tarefa);
+		return ResponseEntity.noContent().build();
 	}
 
 }

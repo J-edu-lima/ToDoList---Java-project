@@ -1,20 +1,25 @@
 package com.joseeduardo.todoist.entity.enums;
 
-public enum Status {
+import java.io.Serializable;
 
-	CRIADA((long) 0), INICIADA((long) 1), CONCLUIDA((long) 2);
-	private Long id;
-
-	private Status(Long id) {
-		this.id = id;
-	}
+public enum Status implements Serializable {
 	
-	public Long getId() {
-		return id;
+	CRIADA("CRIADA"), INICIADA("INICIADA"), CONCLUIDA("CONCLUIDA");
+
+	private String status;
+
+	Status() {
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	Status(String status) {
+		this.setStatus(status);
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
