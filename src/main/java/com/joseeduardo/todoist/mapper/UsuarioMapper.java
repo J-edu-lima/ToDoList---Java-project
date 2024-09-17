@@ -9,6 +9,6 @@ public class UsuarioMapper {
 	}
 
 	public static UsuarioEntity paraEntidade(CriarUsuarioEntradaDTO dto) {
-		return new UsuarioEntity(dto.getNome(), dto.getSenha());
+		return new UsuarioEntity(dto.getNome(), dto.getSenha(), dto.getRole());
 	}
 }

@@ -1,9 +1,7 @@
 package com.joseeduardo.todoist.entity.enums;
 
-import java.io.Serializable;
+public enum Status {
 
-public enum Status implements Serializable {
-	
 	CRIADA("CRIADA"), INICIADA("INICIADA"), CONCLUIDA("CONCLUIDA");
 
 	private String status;

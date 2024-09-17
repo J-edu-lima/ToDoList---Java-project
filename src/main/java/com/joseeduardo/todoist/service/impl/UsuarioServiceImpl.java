@@ -12,7 +12,10 @@ import com.joseeduardo.todoist.model.CriarUsuarioEntradaDTO;
 import com.joseeduardo.todoist.repository.UsuarioRepository;
 import com.joseeduardo.todoist.service.UsuarioService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
@@ -21,6 +24,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
 		this.usuarioRepository = usuarioRepository;
+	}
+
+	public UsuarioServiceImpl() {
+
 	}
 
 	@Override
@@ -33,10 +40,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public List<UsuarioEntity> buscarTodos() {
 		return usuarioRepository.findAll();
 	}
-	
+
 	@Override
 	public UsuarioEntity buscar(Long id) {
 		Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
 		return usuario.orElseThrow();
+	}
+
+	@Override
+	public void excluir(Long id) {
+		usuarioRepository.deleteById(id);
 	}
 }

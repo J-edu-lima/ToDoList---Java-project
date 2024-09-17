@@ -8,6 +8,6 @@ public class TodoistApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodoistApplication.class, args);
-	}
 
+	}
 }

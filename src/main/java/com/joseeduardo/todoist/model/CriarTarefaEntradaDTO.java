@@ -10,8 +10,11 @@ import lombok.Builder;
 public class CriarTarefaEntradaDTO {
 
 	private Long id;
+
 	private String titulo;
+
 	private String descrição;
+
 	private Status status;
 
 	private UsuarioEntity usuario;

@@ -58,7 +58,6 @@ public class TarefaServiceImpl implements TarefaService {
 	public TarefaEntity buscar(Long id) {
 		Optional<TarefaEntity> usuario = tarefaRepository.findById(id);
 		return usuario.orElseThrow();
-
 	}
 
 	@Override
@@ -66,7 +65,6 @@ public class TarefaServiceImpl implements TarefaService {
 	public TarefaEntity atualizar(TarefaEntity novaTarefa, TarefaEntity tarefa) {
 		tarefa.setStatus((novaTarefa.getStatus()));
 		return tarefaRepository.save(tarefa);
-
 	}
 
 }
