@@ -11,8 +11,8 @@ public interface TarefaService {
 	void criar(CriarTarefaEntradaDTO criarTarefaEntradaDTO, Long id);
 	void excluir(Long id);
 	List<TarefaEntity> buscarTodos();
-	List<TarefaEntity> buscarPorStatus(Status status);
 	TarefaEntity buscar(Long id);
 	TarefaEntity atualizar(TarefaEntity novaTarefa, TarefaEntity tarefa);
+	List<TarefaEntity> buscarPorStatus(Status status);
 
 }

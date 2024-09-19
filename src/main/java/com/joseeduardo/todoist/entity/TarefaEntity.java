@@ -2,8 +2,6 @@ package com.joseeduardo.todoist.entity;
 
 import java.io.Serializable;
 
-import org.hibernate.annotations.DynamicUpdate;
-
 import com.joseeduardo.todoist.entity.enums.Status;
 
 import jakarta.persistence.Column;
@@ -19,7 +17,6 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "tb_tarefas")
 @EqualsAndHashCode
-@DynamicUpdate(true)
 public class TarefaEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -24,7 +24,6 @@ import com.joseeduardo.todoist.service.TarefaService;
 @RequestMapping(value = "/v1/tarefa")
 public class TarefaController {
 
-	@Autowired
 	private TarefaService tarefaService;
 
 	@Autowired
@@ -32,16 +31,18 @@ public class TarefaController {
 		this.tarefaService = tarefaService;
 	}
 
-	@PostMapping("/criar/{id}")
+	@PostMapping("{id}")
 	public ResponseEntity<Void> criar(@RequestBody CriarTarefaEntradaDTO criarTarefaEntradaDTO,
 			@PathVariable("id") Long id) {
 		tarefaService.criar(criarTarefaEntradaDTO, id);
+
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
-	@DeleteMapping("/deletar/{id}")
-	public ResponseEntity<Void> exlcuirPorID(@PathVariable("id") Long id) {
+	@DeleteMapping("{id}")
+	public ResponseEntity<Void> exlcuir(@PathVariable("id") Long id) {
 		tarefaService.excluir(id);
+
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 
@@ -50,6 +51,7 @@ public class TarefaController {
 		List<TarefaEntity> tarefas = tarefaService.buscarTodos();
 		List<CriarTarefaEntradaDTO> tarefasEntradaDTO = tarefas.stream().map(x -> new CriarTarefaEntradaDTO(x))
 				.collect(Collectors.toList());
+
 		return ResponseEntity.ok().body(tarefasEntradaDTO);
 	}
 
@@ -58,19 +60,22 @@ public class TarefaController {
 		List<TarefaEntity> tarefas = tarefaService.buscarPorStatus(status);
 		List<CriarTarefaEntradaDTO> tarefasEntradaDTO = tarefas.stream().map(x -> new CriarTarefaEntradaDTO(x))
 				.collect(Collectors.toList());
+
 		return ResponseEntity.ok().body(tarefasEntradaDTO);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<CriarTarefaEntradaDTO> buscar(@PathVariable("id") Long id) {
 		TarefaEntity tarefa = tarefaService.buscar(id);
+
 		return ResponseEntity.ok().body(new CriarTarefaEntradaDTO(tarefa));
 	}
 
-	@PutMapping("/atualizar/{id}")
-	public ResponseEntity<Void> atualizarStatus(@RequestBody TarefaEntity novoStatus, @PathVariable Long id) {
+	@PutMapping("/{id}")
+	public ResponseEntity<Void> atualizar(@RequestBody TarefaEntity novoStatus, @PathVariable Long id) {
 		TarefaEntity tarefa = tarefaService.buscar(id);
 		tarefaService.atualizar(novoStatus, tarefa);
+
 		return ResponseEntity.noContent().build();
 	}
 

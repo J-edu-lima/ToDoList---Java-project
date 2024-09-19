@@ -3,23 +3,7 @@ package com.joseeduardo.todoist.entity.enums;
 import java.io.Serializable;
 
 public enum Status implements Serializable {
-	
-	CRIADA("CRIADA"), INICIADA("INICIADA"), CONCLUIDA("CONCLUIDA");
 
-	private String status;
+	CRIADA, INICIADA, CONCLUIDA;
 
-	Status() {
-	}
-
-	Status(String status) {
-		this.setStatus(status);
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 }

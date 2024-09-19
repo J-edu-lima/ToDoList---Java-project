@@ -26,17 +26,26 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public void criar(CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
 		UsuarioEntity usuarioEntity = UsuarioMapper.paraEntidade(criarUsuarioEntradaDTO);
+
 		usuarioRepository.save(usuarioEntity);
 	}
 
 	@Override
 	public List<UsuarioEntity> buscarTodos() {
+
 		return usuarioRepository.findAll();
 	}
 
 	@Override
 	public UsuarioEntity buscar(Long id) {
 		Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
+
 		return usuario.orElseThrow();
+	}
+
+	@Override
+	public void excluir(Long id) {
+
+		usuarioRepository.deleteById(id);
 	}
 }

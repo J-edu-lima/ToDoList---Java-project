@@ -21,7 +21,6 @@ import jakarta.transaction.Transactional;
 @Service
 public class TarefaServiceImpl implements TarefaService {
 
-	@Autowired
 	private TarefaRepository tarefaRepository;
 
 	@Autowired
@@ -36,27 +35,32 @@ public class TarefaServiceImpl implements TarefaService {
 	public void criar(CriarTarefaEntradaDTO criarTarefaEntradaDTO, @PathVariable Long id) {
 		UsuarioEntity user = usuarioService.buscar(id);
 		TarefaEntity tarefaEntity = TarefaMapper.paraEntidade(criarTarefaEntradaDTO, user);
+
 		tarefaRepository.save(tarefaEntity);
 	}
 
 	@Override
 	public void excluir(Long id) {
+
 		tarefaRepository.deleteById(id);
 	}
 
 	@Override
 	public List<TarefaEntity> buscarTodos() {
+
 		return tarefaRepository.findAll();
 	}
 
 	@Override
 	public List<TarefaEntity> buscarPorStatus(Status status) {
+
 		return tarefaRepository.findByStatus(status);
 	}
 
 	@Override
 	public TarefaEntity buscar(Long id) {
 		Optional<TarefaEntity> usuario = tarefaRepository.findById(id);
+
 		return usuario.orElseThrow();
 	}
 
@@ -64,6 +68,7 @@ public class TarefaServiceImpl implements TarefaService {
 	@Transactional
 	public TarefaEntity atualizar(TarefaEntity novaTarefa, TarefaEntity tarefa) {
 		tarefa.setStatus((novaTarefa.getStatus()));
+
 		return tarefaRepository.save(tarefa);
 	}
 
