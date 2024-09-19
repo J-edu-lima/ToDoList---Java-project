@@ -13,6 +13,4 @@ public interface TarefaRepository extends JpaRepository<TarefaEntity, Long> {
 
 	List<TarefaEntity> findByStatus(Status status);
 
-
-
 }

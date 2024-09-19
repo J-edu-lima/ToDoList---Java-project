@@ -29,7 +29,7 @@ public class UsuarioController {
 		this.usuarioService = usuarioService;
 	}
 
-	@PostMapping
+	@PostMapping("/criar")
 	public ResponseEntity<Void> criar(@RequestBody CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
 		usuarioService.criar(criarUsuarioEntradaDTO);
 

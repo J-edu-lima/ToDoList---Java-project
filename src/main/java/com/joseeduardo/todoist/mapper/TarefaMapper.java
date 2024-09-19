@@ -11,7 +11,6 @@ public class TarefaMapper {
 	}
 
 	public static TarefaEntity paraEntidade(CriarTarefaEntradaDTO dto, UsuarioEntity user) {
-
 		return new TarefaEntity(dto.getId(), dto.getTitulo(), dto.getDescrição(), Status.CRIADA, user);
 	}
 }

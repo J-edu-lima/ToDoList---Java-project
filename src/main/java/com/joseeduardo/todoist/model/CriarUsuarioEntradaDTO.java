@@ -2,7 +2,6 @@ package com.joseeduardo.todoist.model;
 
 import com.joseeduardo.todoist.entity.UsuarioEntity;
 
-
 public class CriarUsuarioEntradaDTO {
 
 	private String nome;

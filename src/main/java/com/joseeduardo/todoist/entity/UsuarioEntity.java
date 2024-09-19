@@ -16,9 +16,9 @@ public class UsuarioEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String senha;
 
 	public UsuarioEntity() {
