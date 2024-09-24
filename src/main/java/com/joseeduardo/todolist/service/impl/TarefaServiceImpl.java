@@ -1,4 +1,4 @@
-package com.joseeduardo.todoist.service.impl;
+package com.joseeduardo.todolist.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.joseeduardo.todoist.entity.TarefaEntity;
-import com.joseeduardo.todoist.entity.UsuarioEntity;
-import com.joseeduardo.todoist.entity.enums.Status;
-import com.joseeduardo.todoist.mapper.TarefaMapper;
-import com.joseeduardo.todoist.model.CriarTarefaEntradaDTO;
-import com.joseeduardo.todoist.repository.TarefaRepository;
-import com.joseeduardo.todoist.service.TarefaService;
-import com.joseeduardo.todoist.service.UsuarioService;
+import com.joseeduardo.todolist.entity.TarefaEntity;
+import com.joseeduardo.todolist.entity.UsuarioEntity;
+import com.joseeduardo.todolist.entity.enums.Status;
+import com.joseeduardo.todolist.mapper.TarefaMapper;
+import com.joseeduardo.todolist.model.CriarTarefaEntradaDTO;
+import com.joseeduardo.todolist.repository.TarefaRepository;
+import com.joseeduardo.todolist.service.TarefaService;
+import com.joseeduardo.todolist.service.UsuarioService;
 
 import jakarta.transaction.Transactional;
 

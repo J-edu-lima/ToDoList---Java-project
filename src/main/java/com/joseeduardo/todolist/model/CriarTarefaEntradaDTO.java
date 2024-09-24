@@ -1,8 +1,8 @@
-package com.joseeduardo.todoist.model;
+package com.joseeduardo.todolist.model;
 
-import com.joseeduardo.todoist.entity.TarefaEntity;
-import com.joseeduardo.todoist.entity.UsuarioEntity;
-import com.joseeduardo.todoist.entity.enums.Status;
+import com.joseeduardo.todolist.entity.TarefaEntity;
+import com.joseeduardo.todolist.entity.UsuarioEntity;
+import com.joseeduardo.todolist.entity.enums.Status;
 
 import lombok.Builder;
 

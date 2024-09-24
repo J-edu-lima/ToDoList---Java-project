@@ -1,8 +1,8 @@
-package com.joseeduardo.todoist.entity;
+package com.joseeduardo.todolist.entity;
 
 import java.io.Serializable;
 
-import com.joseeduardo.todoist.entity.enums.Status;
+import com.joseeduardo.todolist.entity.enums.Status;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

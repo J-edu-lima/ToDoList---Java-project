@@ -1,4 +1,4 @@
-package com.joseeduardo.todoist.service.impl;
+package com.joseeduardo.todolist.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,16 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.joseeduardo.todoist.entity.UsuarioEntity;
-import com.joseeduardo.todoist.mapper.UsuarioMapper;
-import com.joseeduardo.todoist.model.CriarUsuarioEntradaDTO;
-import com.joseeduardo.todoist.repository.UsuarioRepository;
-import com.joseeduardo.todoist.service.UsuarioService;
+import com.joseeduardo.todolist.entity.UsuarioEntity;
+import com.joseeduardo.todolist.mapper.UsuarioMapper;
+import com.joseeduardo.todolist.model.CriarUsuarioEntradaDTO;
+import com.joseeduardo.todolist.repository.UsuarioRepository;
+import com.joseeduardo.todolist.service.UsuarioService;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
-	@Autowired
 	private UsuarioRepository usuarioRepository;
 
 	@Autowired
@@ -24,7 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void criar(CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
+	public void registrar(CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
 		UsuarioEntity usuarioEntity = UsuarioMapper.paraEntidade(criarUsuarioEntradaDTO);
 
 		usuarioRepository.save(usuarioEntity);

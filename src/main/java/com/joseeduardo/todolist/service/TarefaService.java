@@ -1,10 +1,10 @@
-package com.joseeduardo.todoist.service;
+package com.joseeduardo.todolist.service;
 
 import java.util.List;
 
-import com.joseeduardo.todoist.entity.TarefaEntity;
-import com.joseeduardo.todoist.entity.enums.Status;
-import com.joseeduardo.todoist.model.CriarTarefaEntradaDTO;
+import com.joseeduardo.todolist.entity.TarefaEntity;
+import com.joseeduardo.todolist.entity.enums.Status;
+import com.joseeduardo.todolist.model.CriarTarefaEntradaDTO;
 
 public interface TarefaService {
 	

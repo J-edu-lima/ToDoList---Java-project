@@ -1,4 +1,4 @@
-package com.joseeduardo.todoist.controller;
+package com.joseeduardo.todolist.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.joseeduardo.todoist.entity.TarefaEntity;
-import com.joseeduardo.todoist.entity.enums.Status;
-import com.joseeduardo.todoist.model.CriarTarefaEntradaDTO;
-import com.joseeduardo.todoist.service.TarefaService;
+import com.joseeduardo.todolist.entity.TarefaEntity;
+import com.joseeduardo.todolist.entity.enums.Status;
+import com.joseeduardo.todolist.model.CriarTarefaEntradaDTO;
+import com.joseeduardo.todolist.service.TarefaService;
 
 @RestController
 @RequestMapping(value = "/v1/tarefa")
@@ -31,7 +31,7 @@ public class TarefaController {
 		this.tarefaService = tarefaService;
 	}
 
-	@PostMapping("{id}")
+	@PostMapping("/{id}")
 	public ResponseEntity<Void> criar(@RequestBody CriarTarefaEntradaDTO criarTarefaEntradaDTO,
 			@PathVariable("id") Long id) {
 		tarefaService.criar(criarTarefaEntradaDTO, id);
@@ -39,7 +39,7 @@ public class TarefaController {
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> exlcuir(@PathVariable("id") Long id) {
 		tarefaService.excluir(id);
 

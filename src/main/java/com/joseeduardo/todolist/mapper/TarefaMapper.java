@@ -1,9 +1,9 @@
-package com.joseeduardo.todoist.mapper;
+package com.joseeduardo.todolist.mapper;
 
-import com.joseeduardo.todoist.entity.TarefaEntity;
-import com.joseeduardo.todoist.entity.UsuarioEntity;
-import com.joseeduardo.todoist.entity.enums.Status;
-import com.joseeduardo.todoist.model.CriarTarefaEntradaDTO;
+import com.joseeduardo.todolist.entity.TarefaEntity;
+import com.joseeduardo.todolist.entity.UsuarioEntity;
+import com.joseeduardo.todolist.entity.enums.Status;
+import com.joseeduardo.todolist.model.CriarTarefaEntradaDTO;
 
 public class TarefaMapper {
 
@@ -11,6 +11,7 @@ public class TarefaMapper {
 	}
 
 	public static TarefaEntity paraEntidade(CriarTarefaEntradaDTO dto, UsuarioEntity user) {
+		
 		return new TarefaEntity(dto.getId(), dto.getTitulo(), dto.getDescrição(), Status.CRIADA, user);
 	}
 }

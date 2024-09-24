@@ -1,24 +1,30 @@
-package com.joseeduardo.todoist.model;
+package com.joseeduardo.todolist.model;
 
-import com.joseeduardo.todoist.entity.UsuarioEntity;
+import com.joseeduardo.todolist.entity.UsuarioEntity;
+import com.joseeduardo.todolist.entity.enums.UserRole;
 
 public class CriarUsuarioEntradaDTO {
 
 	private String nome;
+
 	private String senha;
+
+	private UserRole role;
 
 	public CriarUsuarioEntradaDTO() {
 
 	}
 
-	public CriarUsuarioEntradaDTO(String nome, String senha) {
+	public CriarUsuarioEntradaDTO(String nome, String senha, UserRole role) {
 		this.nome = nome;
 		this.senha = senha;
+		this.role = role;
 	}
 
 	public CriarUsuarioEntradaDTO(UsuarioEntity user) {
 		this.nome = user.getNome();
 		this.senha = user.getSenha();
+		this.role = user.getUserRole();
 	}
 
 	public String getNome() {
@@ -35,6 +41,14 @@ public class CriarUsuarioEntradaDTO {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
 	}
 
 }

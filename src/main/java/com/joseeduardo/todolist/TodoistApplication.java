@@ -1,4 +1,4 @@
-package com.joseeduardo.todoist;
+package com.joseeduardo.todolist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

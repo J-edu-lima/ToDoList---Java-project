@@ -1,12 +1,12 @@
-package com.joseeduardo.todoist.repository;
+package com.joseeduardo.todolist.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.joseeduardo.todoist.entity.TarefaEntity;
-import com.joseeduardo.todoist.entity.enums.Status;
+import com.joseeduardo.todolist.entity.TarefaEntity;
+import com.joseeduardo.todolist.entity.enums.Status;
 
 @Repository
 public interface TarefaRepository extends JpaRepository<TarefaEntity, Long> {

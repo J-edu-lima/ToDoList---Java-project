@@ -1,4 +1,4 @@
-package com.joseeduardo.todoist.controller;
+package com.joseeduardo.todolist.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.joseeduardo.todoist.entity.UsuarioEntity;
-import com.joseeduardo.todoist.model.CriarUsuarioEntradaDTO;
-import com.joseeduardo.todoist.service.UsuarioService;
+import com.joseeduardo.todolist.entity.UsuarioEntity;
+import com.joseeduardo.todolist.model.CriarUsuarioEntradaDTO;
+import com.joseeduardo.todolist.service.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/v1/usuario")
+@RequestMapping(value = "v1/usuario")
 public class UsuarioController {
 
 	private UsuarioService usuarioService;
@@ -30,14 +30,14 @@ public class UsuarioController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> criar(@RequestBody CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
-		usuarioService.criar(criarUsuarioEntradaDTO);
+	public ResponseEntity<Void> registrar(@RequestBody CriarUsuarioEntradaDTO criarUsuarioEntradaDTO) {
+		usuarioService.registrar(criarUsuarioEntradaDTO);
 
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
-	@DeleteMapping("{id}")
-	public ResponseEntity<Void> exlcuir(@PathVariable("id") Long id) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
 		usuarioService.excluir(id);
 
 		return ResponseEntity.status(HttpStatus.OK).build();
