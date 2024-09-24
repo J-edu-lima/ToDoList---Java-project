@@ -15,6 +15,7 @@ public class TokenService {
 	private String secret = "senha";
 
 	public String generateToken(UsuarioEntity usuarioEntity) {
+
 		Algorithm algorithm = Algorithm.HMAC256(secret);
 		String token = JWT.create().withIssuer("auth").withSubject(usuarioEntity.getNome())
 				.withClaim("id", usuarioEntity.getId())

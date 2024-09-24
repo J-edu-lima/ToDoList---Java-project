@@ -14,5 +14,6 @@ public interface TarefaService {
 	TarefaEntity buscar(Long id);
 	TarefaEntity atualizar(TarefaEntity novaTarefa, TarefaEntity tarefa);
 	List<TarefaEntity> buscarPorStatus(Status status);
+	boolean validarUsuario(Long id);
 
 }

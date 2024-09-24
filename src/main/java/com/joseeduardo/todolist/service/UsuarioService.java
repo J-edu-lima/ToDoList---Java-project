@@ -11,4 +11,5 @@ public interface UsuarioService {
     void excluir(Long id);
 	List<UsuarioEntity> buscarTodos();
 	UsuarioEntity buscar(Long id);
+	boolean validarUsuario(Long id);
 }

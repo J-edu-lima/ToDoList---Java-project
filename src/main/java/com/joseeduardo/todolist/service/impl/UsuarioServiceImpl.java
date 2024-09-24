@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.joseeduardo.todolist.entity.UsuarioEntity;
@@ -44,7 +45,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public void excluir(Long id) {
+		if (validarUsuario(id) == true) {
 
-		usuarioRepository.deleteById(id);
+			usuarioRepository.deleteById(id);
+		} else
+			throw new RuntimeException("Usuario Inválido");
+	}
+
+	@Override
+	public boolean validarUsuario(Long id) {
+		UsuarioEntity usuario = buscar(id);
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+		if (usuario.getNome().equals(name)) {
+
+			return true;
+		} else
+			return false;
 	}
 }

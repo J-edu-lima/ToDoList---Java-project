@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -33,16 +34,23 @@ public class TarefaServiceImpl implements TarefaService {
 
 	@Override
 	public void criar(CriarTarefaEntradaDTO criarTarefaEntradaDTO, @PathVariable Long id) {
-		UsuarioEntity user = usuarioService.buscar(id);
-		TarefaEntity tarefaEntity = TarefaMapper.paraEntidade(criarTarefaEntradaDTO, user);
+		if (validarUsuario(id) == true) {
+			UsuarioEntity user = usuarioService.buscar(id);
+			TarefaEntity tarefaEntity = TarefaMapper.paraEntidade(criarTarefaEntradaDTO, user);
 
-		tarefaRepository.save(tarefaEntity);
+			tarefaRepository.save(tarefaEntity);
+		} else
+			throw new RuntimeException("Usuario Inválido");
 	}
 
 	@Override
 	public void excluir(Long id) {
+		Optional<TarefaEntity> tarefa = tarefaRepository.findById(id);
+		if (validarUsuario(tarefa.get().getUsuario().getId()) == true) {
 
-		tarefaRepository.deleteById(id);
+			tarefaRepository.deleteById(id);
+		} else
+			throw new RuntimeException("Usuario Inválido");
 	}
 
 	@Override
@@ -59,17 +67,30 @@ public class TarefaServiceImpl implements TarefaService {
 
 	@Override
 	public TarefaEntity buscar(Long id) {
-		Optional<TarefaEntity> usuario = tarefaRepository.findById(id);
+		Optional<TarefaEntity> tarefa = tarefaRepository.findById(id);
 
-		return usuario.orElseThrow();
+		return tarefa.orElseThrow();
 	}
 
 	@Override
 	@Transactional
 	public TarefaEntity atualizar(TarefaEntity novaTarefa, TarefaEntity tarefa) {
-		tarefa.setStatus((novaTarefa.getStatus()));
+		if (validarUsuario(tarefa.getUsuario().getId()) == true) {
+			tarefa.setStatus((novaTarefa.getStatus()));
 
-		return tarefaRepository.save(tarefa);
+			return tarefaRepository.save(tarefa);
+		} else
+			throw new RuntimeException("Usuario Inválido");
 	}
 
+	@Override
+	public boolean validarUsuario(Long id) {
+		UsuarioEntity usuario = usuarioService.buscar(id);
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+		if (usuario.getNome().equals(name)) {
+
+			return true;
+		} else
+			return false;
+	}
 }
