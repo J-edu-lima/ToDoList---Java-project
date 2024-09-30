@@ -40,7 +40,7 @@ public class TarefaController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> exlcuir(@PathVariable("id") Long id) {
+	public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
 		tarefaService.excluir(id);
 
 		return ResponseEntity.status(HttpStatus.OK).build();
@@ -56,7 +56,7 @@ public class TarefaController {
 	}
 
 	@GetMapping("/status/{status}")
-	public ResponseEntity<List<CriarTarefaEntradaDTO>> buscarStatus(@PathVariable Status status) {
+	public ResponseEntity<List<CriarTarefaEntradaDTO>> buscarPorStatus(@PathVariable Status status) {
 		List<TarefaEntity> tarefas = tarefaService.buscarPorStatus(status);
 		List<CriarTarefaEntradaDTO> tarefasEntradaDTO = tarefas.stream().map(x -> new CriarTarefaEntradaDTO(x))
 				.collect(Collectors.toList());

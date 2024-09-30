@@ -19,7 +19,7 @@ import com.joseeduardo.todolist.model.CriarUsuarioEntradaDTO;
 import com.joseeduardo.todolist.service.UsuarioService;
 
 @RestController
-@RequestMapping(value = "v1/usuario")
+@RequestMapping(value = "/v1/usuario")
 public class UsuarioController {
 
 	private UsuarioService usuarioService;
@@ -46,10 +46,10 @@ public class UsuarioController {
 	@GetMapping
 	public ResponseEntity<List<CriarUsuarioEntradaDTO>> buscarTodos() {
 		List<UsuarioEntity> usuarios = usuarioService.buscarTodos();
-		List<CriarUsuarioEntradaDTO> usuariosDto = usuarios.stream().map(x -> new CriarUsuarioEntradaDTO(x))
+		List<CriarUsuarioEntradaDTO> usuariosSaidaDto = usuarios.stream().map(x -> new CriarUsuarioEntradaDTO(x))
 				.collect(Collectors.toList());
 
-		return ResponseEntity.ok().body(usuariosDto);
+		return ResponseEntity.ok().body(usuariosSaidaDto);
 	}
 
 	@GetMapping("/{id}")

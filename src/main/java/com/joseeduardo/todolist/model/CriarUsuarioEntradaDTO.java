@@ -3,8 +3,10 @@ package com.joseeduardo.todolist.model;
 import com.joseeduardo.todolist.entity.UsuarioEntity;
 import com.joseeduardo.todolist.entity.enums.UserRole;
 
-public class CriarUsuarioEntradaDTO {
+import jakarta.persistence.Column;
 
+public class CriarUsuarioEntradaDTO {
+	@Column(unique = true)
 	private String nome;
 
 	private String senha;

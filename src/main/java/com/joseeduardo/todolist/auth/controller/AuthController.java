@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.joseeduardo.todolist.auth.service.AuthorizationService;
-import com.joseeduardo.todolist.security.dto.LoginDto;
+import com.joseeduardo.todolist.security.dto.LoginEntradaDto;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class AuthController {
 
 	@Autowired
 	AuthorizationService authorizationService;
 
 	@PostMapping("/login")
-	public ResponseEntity<Object> login(@RequestBody LoginDto loginDto) {
+	public ResponseEntity<Object> login(@RequestBody LoginEntradaDto loginEntradaDto) {
 
-		return authorizationService.login(loginDto);
+		return authorizationService.login(loginEntradaDto);
 	}
 }

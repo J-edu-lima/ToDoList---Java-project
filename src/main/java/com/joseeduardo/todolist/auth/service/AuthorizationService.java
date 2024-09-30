@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.joseeduardo.todolist.entity.UsuarioEntity;
 import com.joseeduardo.todolist.repository.UsuarioRepository;
-import com.joseeduardo.todolist.security.dto.LoginDto;
+import com.joseeduardo.todolist.security.dto.LoginEntradaDto;
 import com.joseeduardo.todolist.security.dto.LoginRespostaDto;
 
 @Service
@@ -34,7 +34,7 @@ public class AuthorizationService implements UserDetailsService {
 		return usuarioRepository.findByNome(nome);
 	}
 
-	public ResponseEntity<Object> login(LoginDto login) {
+	public ResponseEntity<Object> login(LoginEntradaDto login) {
 		authenticationManager = context.getBean(AuthenticationManager.class);
 		var usernamePassword = new UsernamePasswordAuthenticationToken(login.nome(), login.senha());
 		var auth = this.authenticationManager.authenticate(usernamePassword);

@@ -24,17 +24,17 @@ public class SecurityConfig {
 	SecurityFilter securityFilter;
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+	public SecurityFilterChain filtroDeSeguranca(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity.csrf(csrf -> csrf.disable())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(
-						authorize -> authorize.requestMatchers(HttpMethod.POST, "v1/usuario", "auth/login").permitAll()
+						authorize -> authorize.requestMatchers(HttpMethod.POST, "/v1/usuario", "/auth/login").permitAll()
 								.anyRequest().authenticated())
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
 	}
 
 	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+	public AuthenticationManager gerenciadorDeAutenticacao(AuthenticationConfiguration authenticationConfiguration)
 			throws Exception {
 
 		return authenticationConfiguration.getAuthenticationManager();
@@ -42,7 +42,7 @@ public class SecurityConfig {
 
 	@Bean
 
-	public PasswordEncoder passwordEncoder() {
+	public PasswordEncoder codificadorDeSenha() {
 
 		return new BCryptPasswordEncoder();
 	}
