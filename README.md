@@ -27,17 +27,14 @@ Esse projeto tem como intuito te ajudar a organizar suas tarefas diárias. Ele f
 
 2. **Entre na pasta do projeto**:
    ```bash
-   cd todoList
+   cd ToDoList---Java-project
    ```
 
 3. **Configure o banco de dados**:
    - Crie um banco de dados chamado `todo_list` no MySQL.
    - Atualize as configurações de conexão no arquivo `application.properties`.
 
-4. **Execute o projeto**: Comece a usar o aplicativo.
-   ```bash
-   mvn spring-boot:run
-   ```
+4. **Execute o projeto**: Comece a usar o programa e faça as requisiçoes pelo postman ou em outra plataforma.   
 
 ## Como usar
 
