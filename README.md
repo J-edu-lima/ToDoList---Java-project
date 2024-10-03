@@ -22,7 +22,7 @@ Esse projeto tem como intuito te ajudar a organizar suas tarefas diárias. Ele f
 
 1. **Clone o repositório**: Faça uma cópia do projeto para o seu computador.
    ```bash
-   git clone https://github.com/seu-usuario/todoList.git
+   git clone git@github.com:J-edu-lima/ToDoList---Java-project.git
    ```
 
 2. **Entre na pasta do projeto**:
